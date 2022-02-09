@@ -10,12 +10,9 @@ public class Main {
 
     private static boolean checkSubset(String text, String subset) {
         int i2 = 0;
-
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) == subset.charAt(i2)) {
-                if (++i2 == subset.length()) {
-                    return true;
-                }
+            if (text.charAt(i) == subset.charAt(i2) && ++i2 == subset.length()) {
+                return true;
             }
         }
 
