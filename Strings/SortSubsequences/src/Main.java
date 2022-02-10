@@ -63,10 +63,8 @@ public class Main {
         Collections.sort(subsequences, (String s1, String s2) -> {
             if (s1.length() == s2.length()) {
                 return s1.compareTo(s2);
-            } else if (s1.length() < s2.length()) {
-                return -1;
             }
-            return 1;
+            return s1.length() < s2.length() ? -1 : 1;
         });
 
         return subsequences;
