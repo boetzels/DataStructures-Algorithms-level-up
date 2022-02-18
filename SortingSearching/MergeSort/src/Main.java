@@ -19,10 +19,14 @@ public class Main {
         Integer[] leftPart = MergeSort(Arrays.copyOfRange(sortArray, 0, divider));
         Integer[] rightPart = MergeSort(Arrays.copyOfRange(sortArray, divider, sortArray.length));
 
+        return Merge(leftPart, rightPart);
+    }
+
+    private static  Integer[] Merge(Integer[] leftPart, Integer[] rightPart) {
         int i = 0;
         int j = 0;
         int k = 0;
-        Integer[] result = new Integer[sortArray.length];
+        Integer[] result = new Integer[leftPart.length + rightPart.length];
 
         while (i + j < leftPart.length + rightPart.length) {
             if (j == rightPart.length || i < leftPart.length && leftPart[i] <= rightPart[j]) {
