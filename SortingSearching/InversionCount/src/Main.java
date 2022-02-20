@@ -5,20 +5,20 @@ public class Main {
         // write your code here
         Integer[] numbers = {10, 1, 1, 234, 34, 2, 5, 2, 0, 7, 6, 4};
 
-        Integer[] result = MergeSortInversionCount(numbers);
+        Integer[] result = InversionCount(numbers);
 
         System.out.println(result[result.length - 1]);
     }
 
-    private static Integer[] MergeSortInversionCount(Integer[] sortArray) {
+    private static Integer[] InversionCount(Integer[] sortArray) {
         if (sortArray.length <= 1) {
             return new Integer[]{sortArray[0], 0};
         }
 
         int divider = sortArray.length / 2;
 
-        Integer[] leftPart = MergeSortInversionCount(Arrays.copyOfRange(sortArray, 0, divider));
-        Integer[] rightPart = MergeSortInversionCount(Arrays.copyOfRange(sortArray, divider, sortArray.length));
+        Integer[] leftPart = InversionCount(Arrays.copyOfRange(sortArray, 0, divider));
+        Integer[] rightPart = InversionCount(Arrays.copyOfRange(sortArray, divider, sortArray.length));
 
         return Merge(leftPart, rightPart);
     }
