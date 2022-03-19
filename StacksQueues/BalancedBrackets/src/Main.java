@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class Main {
@@ -13,22 +13,22 @@ public class Main {
     }
 
     private static boolean checkBalancedBrackets(String string) {
-        LinkedList<String> stack = new LinkedList<>();
+        Deque<String> stack = new LinkedList<>();
 
         for (int i = 0; i < string.length(); i++) {
             String bracket = String.valueOf(string.charAt(i));
             if (bracket.equals("(") || bracket.equals("{") || bracket.equals("[") ) {
-                stack.offerLast(bracket);
+                stack.push(bracket);
             }
             else if ( stack.size() > 0 &&
                     (
-                        bracket.equals(")") && stack.peekLast().equals("(") ||
-                        bracket.equals("}") && stack.peekLast().equals("{") ||
-                        bracket.equals("]") && stack.peekLast().equals("[")
+                        bracket.equals(")") && stack.peek().equals("(") ||
+                        bracket.equals("}") && stack.peek().equals("{") ||
+                        bracket.equals("]") && stack.peek().equals("[")
                     )
                 )
             {
-                stack.removeLast();
+                stack.pop();
             }
             else {
                 return false;
