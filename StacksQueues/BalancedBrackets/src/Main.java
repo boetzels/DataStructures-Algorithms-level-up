@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Main {
 
@@ -12,28 +13,28 @@ public class Main {
     }
 
     private static boolean checkBalancedBrackets(String string) {
-        ArrayList<String> stack = new ArrayList<>();
+        LinkedList<String> stack = new LinkedList<>();
 
         for (int i = 0; i < string.length(); i++) {
             String bracket = String.valueOf(string.charAt(i));
             if (bracket.equals("(") || bracket.equals("{") || bracket.equals("[") ) {
-                stack.add(bracket);
+                stack.offerLast(bracket);
             }
             else if ( stack.size() > 0 &&
                     (
-                        bracket.equals(")") && stack.get(stack.size()-1).equals("(") ||
-                        bracket.equals("}") && stack.get(stack.size()-1).equals("{") ||
-                        bracket.equals("]") && stack.get(stack.size()-1).equals("[")
+                        bracket.equals(")") && stack.peekLast().equals("(") ||
+                        bracket.equals("}") && stack.peekLast().equals("{") ||
+                        bracket.equals("]") && stack.peekLast().equals("[")
                     )
                 )
             {
-                stack.remove(stack.size()-1);
+                stack.removeLast();
             }
             else {
                 return false;
             }
         }
 
-        return true;
+        return stack.size() == 0;
     }
 }
