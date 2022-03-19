@@ -19,13 +19,11 @@ public class Main {
     }
 
     public static void ReverseList(LinkedList<Integer> list, int index) {
-        int size = list.size();
-
         Integer newHead = list.get(index + 1);
         list.remove(index + 1);
         list.offerFirst(newHead);
 
-        if (index < size - 2) {
+        if (index < list.size() - 2) {
             ReverseList(list, index + 1);
         }
     }
