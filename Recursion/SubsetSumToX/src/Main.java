@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        int sum = 20;
+        int sum = 36;
         int[] numbers = {10, 12, 15, 6, 19, 20};
 
         System.out.println(SubsetSumToX(0, 0, sum, numbers));
